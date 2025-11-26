@@ -49,10 +49,10 @@ La aplicación Flask gestiona los siguientes puntos de entrada:
 
 Este módulo implementa la lógica de interacción con el modelo de Inteligencia Artificial:
 
-1. **Recuperación de Ventana:** Obtiene las últimas `WINDOW_SIZE` mediciones de Redis. Si no hay suficientes datos, informa al usuario .  
-2. **Preprocesamiento:** Formatea los datos en un array de Numpy con la forma `(1, WINDOW_SIZE, 1)` requerida por el modelo Autoencoder.  
+1. **Recuperación de Ventana:** Obtiene las últimas `WINDOW_SIZE` mediciones de Redis. Si no hay suficientes datos, informa al usuario.  
+2. **Preprocesamiento:** Formatea los datos en un array de Numpy con la forma `(1, WINDOW_SIZE, 1)` requerida por el modelo `Autoencoder`.  
 3. Inferencia Remota: En lugar de cargar el modelo en la propia API (lo cual consumiría mucha memoria en cada réplica), se envía una petición POST al servicio serving en el puerto `8501`:  
-   `http://{SERVING\_HOST}:8501/v1/models/{MODEL\_NAME}:predict`.  
+   `http://{SERVING_HOST}:8501/v1/models/{MODEL_NAME}:predict`.  
 4. **Decisión:** Compara el valor predicho con el real. Si la diferencia absoluta supera el `THRESHOLD`, se marca como anomalía (`TRUE` en rojo), de lo contrario es normal (`FALSE` en verde).
 
 ## **4\. Despliegue y Configuración (Docker Swarm)**
@@ -87,7 +87,7 @@ Fig 1\. Estado de los servicios en Docker Swarm visualizados.
 
 ### **5.2. Ingesta de Datos y Listado**
 
-Se han realizado peticiones curl al endpoint /nuevo para poblar la base de datos. Posteriormente, al acceder a /listar, se observa la persistencia de los datos y el cambio de Hostname en las diferentes peticiones, evidenciando el funcionamiento del balanceador de carga interno de Docker Swarm.
+Se han realizado peticiones curl al endpoint `/nuevo` para poblar la base de datos. Posteriormente, al acceder a `/listar`, se observa la persistencia de los datos y el cambio de `Hostname` en las diferentes peticiones, evidenciando el funcionamiento del balanceador de carga interno de Docker Swarm.
 
 ![image](./images/img0.png)
 
@@ -99,7 +99,7 @@ Se ha probado el sistema introduciendo una secuencia de datos estables seguida d
 
 ### **5.4. Monitorización con Grafana**
 
-Se configuró Grafana con el plugin redis-datasource. A continuación se muestra el dashboard en tiempo real con la evolución de las temperaturas registradas en Redis.
+Se configuró Grafana con el plugin `redis-datasource`. A continuación se muestra el dashboard en tiempo real con la evolución de las temperaturas registradas en Redis.
 
 ![image](./images/img3.png)
 
