@@ -1,10 +1,8 @@
-# **Memoria de Práctica: Sistemas Distribuidos y Contenedores con Docker**
+# **Contenedores con Replicación en Docker**
 
 Asignatura: Desarrollo de Software Crítico
 
 Universidad de Málaga
-
-Fecha: Noviembre 2025
 
 ---
 
