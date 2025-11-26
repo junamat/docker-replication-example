@@ -22,7 +22,7 @@ El sistema se compone de los siguientes servicios orquestados en `docker-compose
 
 ## Instalación y Despliegue
 
-### 1\. Construir la imagen de la aplicación
+### 1\. Construir la imagen de la aplicación (opcional)
 
 Antes de desplegar el stack, asegúrate de que la imagen de la aplicación web esté disponible o constrúyela localmente:
 
