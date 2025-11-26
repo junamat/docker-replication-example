@@ -35,7 +35,7 @@ Se ha creado una imagen basada en python:3.11-slim para minimizar el tamaño y l
 * **Gestión de Dependencias:** Se copian e instalan las librerías listadas en requirements.txt (Flask, Redis, Numpy, Requests).  
 * **Variables de Entorno:** Se definen variables críticas como `THRESHOLD` (9.233), `WINDOW_SIZE` (10) y `REDIS_HOST` para permitir la configuración dinámica sin reconstruir la imagen.
 
-### **3.2. Lógica de Negocio (app.py)**
+### **3.2. Lógica (app.py)**
 
 La aplicación Flask gestiona los siguientes puntos de entrada:
 
