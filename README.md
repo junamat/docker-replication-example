@@ -27,7 +27,7 @@ El sistema se compone de los siguientes servicios orquestados en `docker-compose
 Antes de desplegar el stack, asegúrate de que la imagen de la aplicación web esté disponible o constrúyela localmente:
 
 ```bash
-docker build -t apfnam/get-started:part2 .
+docker build -t apfnam/get-started:part2 
 ```
 
 *(Nota: Asegúrate de que el nombre de la imagen coincida con el definido en el `docker-compose-serving.yml` o actualiza el archivo YAML).*

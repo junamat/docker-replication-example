@@ -28,7 +28,7 @@ Todos los servicios se comunican a través de una overlay de red denominada webn
 
 ### **3.1. Contenedor de la Aplicación (Dockerfile)**
 
-Se ha creado una imagen basada en python:3.11-slim para minimizar el tamaño y la superficie de ataque.
+Se ha creado una imagen basada en `python:3.11-slim` para minimizar el tamaño.
 
 * **Gestión de Dependencias:** Se copian e instalan las librerías listadas en requirements.txt (Flask, Redis, Numpy, Requests).  
 * **Variables de Entorno:** Se definen variables críticas como `THRESHOLD` (9.233), `WINDOW_SIZE` (10) y `REDIS_HOST` para permitir la configuración dinámica sin reconstruir la imagen.
