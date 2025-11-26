@@ -8,7 +8,7 @@ El sistema simula un entorno industrial donde se recogen mediciones, se almacena
 
 El sistema se compone de los siguientes servicios orquestados en `docker-compose-serving.yml`:
 
-  * **Web API (Flask):** 5 réplicas del servicio principal. Recibe las peticiones HTTP, gestiona la lógica de negocio y se comunica con Redis y TensorFlow Serving.
+  * **Web API (Flask):** Cuenta con 5 réplicas. Recibe las peticiones HTTP, gestiona la lógica y se comunica con Redis y TensorFlow Serving.
   * **Redis:** Base de datos en memoria (usando el módulo TimeSeries) para almacenar el histórico de temperaturas.
   * **TensorFlow Serving:** Servidor dedicado para realizar inferencias sobre el modelo de detección de anomalías de forma eficiente.
   * **Grafana:** Panel de visualización para monitorizar los datos almacenados en Redis.
@@ -37,7 +37,6 @@ docker build -t apfnam/get-started:part2 .
 Para lanzar el clúster con todos los servicios, ejecuta los siguientes comando:
 
 ```bash
-docker swarm init
 docker stack deploy -c docker-compose-serving.yml practica_dsc
 ```
 
@@ -53,7 +52,7 @@ O acceder al **Visualizer** en tu navegador: `http://localhost:8080`
 
 ### 4\. Detener el stack
 
-Cuando desees detener el servicio y volver a un estado previo a la ejecución del servicio puedes ejecutar el siguiente comando
+Cuando desees detener el servicio y volver a un estado previo a la ejecución del servicio puedes ejecutar el siguiente comando:
 
 ```bash
 docker stack rm practica_dsc
@@ -74,7 +73,7 @@ curl "http://localhost:4000/nuevo?dato=25.4"
 
 ### 2\. Listar mediciones
 
-Muestra el historial de temperaturas almacenadas y el *hostname* del contenedor que atendió la petición.
+Muestra el historial de temperaturas almacenadas.
 
 ```bash
 curl "http://localhost:4000/listar"
@@ -94,13 +93,13 @@ curl "http://localhost:4000/detectar?dato=80.5"
 
 Los parámetros principales están definidos en el `Dockerfile` y el `docker-compose-serving.yml`:
 
-| Variable | Valor por defecto | Descripción |
-| :--- | :--- | :--- |
-| `REDIS_HOST` | `redis` | Host del servicio de base de datos. |
-| `SERVING_HOST` | `serving` | Host del servicio de TensorFlow Serving. |
-| `WINDOW_SIZE` | `10` | Tamaño de la ventana de tiempo para la predicción. |
-| `THRESHOLD` | `9.233` | Umbral de error para considerar una anomalía. |
-| `MODEL_NAME` | `modelo` | Nombre del modelo en TF Serving. |
+| Variable       | Valor por defecto | Descripción                                        |
+|:---------------|:------------------|:---------------------------------------------------|
+| `REDIS_HOST`   | `redis`           | Host del servicio de base de datos.                |
+| `SERVING_HOST` | `serving`         | Host del servicio de TensorFlow Serving.           |
+| `WINDOW_SIZE`  | `10`              | Tamaño de la ventana de tiempo para la predicción. |
+| `THRESHOLD`    | `9.233`           | Umbral de error para considerar una anomalía.      |
+| `MODEL_NAME`   | `modelo`          | Nombre del modelo en TF Serving.                   |
 
 ## Visualización (Grafana)
 
